@@ -40,6 +40,7 @@ downloadBaseData <- function() {
     if (!dir.exists(baseDataPath)) {
         download.file(baseDataURL,destfile = baseDataZIP, method = "curl")
         unzip(baseDataZIP)
+	file.remove(baseDataZIP)
     }
 }
 

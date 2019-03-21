@@ -1,6 +1,6 @@
 # GCDProject
 ## *Getting and Cleaning Data* Class Project Script ##
-All the code for this project is contained in a single R script file called 'GCDProject.R'  
+The purpose of this project is practice the skills for getting and cleaning data to produce tidy data sets. All the code for this project is contained in a single R script file called 'GCDProject.R'  
 
 The code is structured in a conventional 'C' language style, with some global variables declared first, then some functions that perform simple individual tasks, and final main body part that glues all the logic together. The global vars declared at the begining are URL and path names, in order to keep code tidy and readable, not cluttered with long path names embedded in the code, but also to make it more portable.  
 
@@ -55,5 +55,8 @@ writeTidyData(summaryData,tidyDataSet2)
 
 ```
 
+### Data sets ###
+File tidyData/tidy_data_1.csv contains 10299 vectors with 66 features, plus the subject and the activity being performed.  
+File tidyData/tidy_data_2.csv contains 180 vectors with 66 features, which are the average of the individual features per subject and activity.
 
 
