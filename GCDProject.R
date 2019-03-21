@@ -20,6 +20,8 @@ baseDataURL        <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfi
 baseDataZIP        <- "./baseData.zip"
 baseDataPath       <- "./UCI HAR Dataset/"
 tidyDataPath       <- "./tidyData/"
+tidyDataSet1       <- "tidy_data_1.csv"
+tidyDataSet2       <- "tidy_data_2.csv"
 activity_labels_f  <- "./UCI HAR Dataset/activity_labels.txt"
 features_f         <- "./UCI HAR Dataset/features.txt"
 X_test_f           <- "./UCI HAR Dataset/test/X_test.txt"
@@ -158,7 +160,7 @@ writeTidyData(as.data.frame(feature_names),"labels.txt") # dump names to write t
 
 # Step 5 - Write first data set: simpler and tidier
 
-writeTidyData(baseData,"tidy_data_1.csv")
+writeTidyData(baseData,tidyDataSet1)
 
 # Step 6 - Summarize all vars on their mean, groupd by Subject and Activity
 
@@ -168,4 +170,7 @@ summaryData <- baseData         %>%      # Start by piping base data
 
 # Step 7 - Write second data set: summary version of the first
 
-writeTidyData(summaryData,"tidy_data_2.csv")
+writeTidyData(summaryData,tidyDataSet2)
+
+# View(baseData)
+# View(summaryData)
