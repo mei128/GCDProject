@@ -32,7 +32,7 @@ In the original data set the activity performed by the subject is indicated with
 ```{r eval=FALSE}
 baseData <- mutate(baseData,Activity = activity_names[Activity,1])
 ```
-###Step 4###
+### Step 4 ###
 The function tidyNames expands abbreviations in column names to their full meaning (i.e. Acc to Acceleration), separates terms with dots, maintains prefixes 't' or 'f' to indicate time based or frequency based data, and postfixes names with '.mean' or 'stdev' to qualify values as such.
 ```{r eval=FALSE}
 feature_names      <- tidyNames(names(baseData))
