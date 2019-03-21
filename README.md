@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 # GCDProject
 ##*Getting and Cleaning Data* Class Project Script##
 All the code for this project is contained in a single R script file called 'GCDProject.R'  
