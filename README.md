@@ -17,23 +17,23 @@ feature_names  <- c("Subject","Activity",make.names(feature_names[,1],unique = T
 ```
 At this moment we have read and stored subject ids (subject), activity ids (activity) and names (activity_names), feature vectors (features) and names (feature_names).
 ### Step 1 ###
-Subject ids, activity ids, and feature vectors are all column bound to create a single table, to which we asign the feature names as column names.
+Subject ids, activity ids, and feature vectors are all column bound to create a single table, to which we asign the feature names as column names. 
 ```{r eval=FALSE}
 baseData           <- cbind(subject,activity,features)  # Combine columns  
 colnames(baseData) <- feature_names                     # and column names  
 ```
 ### Step 2 ###
-We trim the data set by selecting only Subject, Activity, and those columns which contain mean and standard deviation features. Note that features like 'fBodyAcc-meanFreq' in the original data set are not really means of measurements taken.
+We trim the data set by selecting only Subject, Activity, and those columns which contain mean and standard deviation features.  After the make.names statement, 'mean()' became 'mean..', and 'std()' became 'std..', hence the trailing '\\.' for both in the select statement. Note that features like 'fBodyAcc-meanFreq' in the original data set are not really means of measurements taken.
 ```{r eval=FALSE}
 baseData <- select(baseData,grep("Subject|Activity|mean\\.|std\\.",names(baseData),value=TRUE))
 ```
 ### Step 3 ###
-In the original data set the activity performed by the subject is indicated with an index, that we now replace with meaningful text descriptions from the activity_names table.
+In the original data set the activity performed by the subject is indicated with an index, that we now replace with a meaningful text descriptions from the activity_names table.
 ```{r eval=FALSE}
 baseData <- mutate(baseData,Activity = activity_names[Activity,1])
 ```
 ### Step 4 ###
-The function tidyNames expands abbreviations in column names to their full meaning (i.e. Acc to Acceleration), separates terms with dots, maintains prefixes 't' or 'f' to indicate time based or frequency based data, and postfixes names with '.mean' or 'stdev' to qualify values as such.
+The function tidyNames expands abbreviations in column names to their full meaning (i.e. Acc to Acceleration), separates terms with dots, replaces leading 't' and 'f' with 'time' and 'freq' to indicate time based or frequency based data, and postfixes names with '.mean' or 'stdev' as required.
 ```{r eval=FALSE}
 feature_names      <- tidyNames(names(baseData))
 colnames(baseData) <- feature_names
