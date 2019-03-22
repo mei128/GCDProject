@@ -109,8 +109,8 @@ tidyNames <-function(uglynames) {
         mutate(value=sub("Acc","Acceleration",value))    %>%
         mutate(value=sub("Gyro","Angular",value))        %>%
         mutate(value=sub("Mag","Magnitude",value))       %>%
-        mutate(value=sub("^t","t.",value))               %>%
-        mutate(value=sub("^f","f.",value))
+        mutate(value=sub("^t","time.",value))            %>%
+        mutate(value=sub("^f","freq.",value))
     return(cnames$value)
 }
 
@@ -140,9 +140,8 @@ feature_names  <- c("Subject","Activity",make.names(feature_names[,1],unique = T
 
 ## Step 1 - Combine columns and columnnames
 
-baseData           <- cbind(subject,activity,features)  # Combine columns
-colnames(baseData) <- feature_names                     # and column names
-rm("features","activity","subject")                     # clean-up environment (not really needed)
+baseData           <- cbind(subject,activity,features)   # Combine columns
+colnames(baseData) <- feature_names                      # and add column names
 
 ## Step 2 - Trim data, leaving only Subject, Activity, and mean and standard deviations of measurements
 
@@ -157,21 +156,22 @@ baseData <- mutate(baseData,Activity = activity_names[Activity,1])
 feature_names      <- tidyNames(names(baseData))
 colnames(baseData) <- feature_names
 
-writeTidyData(as.data.frame(feature_names),"labels.txt") # dump names to write the code book later
-
 # Step 5 - Write first data set: simpler and tidier
 
 writeTidyData(baseData,tidyDataSet1)
 
-# Step 6 - Summarize all vars on their mean, groupd by Subject and Activity
+# Step 6 - Summarize all vars on their mean, groupd by Subject and Activity, write second data set
 
 summaryData <- baseData         %>%      # Start by piping base data
     group_by(Subject,Activity)  %>%      # group output by Subject and Activity
     summarize_all(mean)                  # summarize all on their mean
 
-# Step 7 - Write second data set: summary version of the first
-
 writeTidyData(summaryData,tidyDataSet2)
+
+# Final cleanup - not really needed, but leaves an environment clean to perform analysis.
+
+# rm("features","activity","subject","feature_names","activity_names")
+# write_csv(as.data.frame(names(baseData)),"labels.txt") # dump names to write the code book later
 
 # View(baseData)
 # View(summaryData)

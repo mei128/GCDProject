@@ -23,7 +23,7 @@ baseData           <- cbind(subject,activity,features)  # Combine columns
 colnames(baseData) <- feature_names                     # and column names  
 ```
 ### Step 2 ###
-We trim the data set by selecting only Subject, Activity, and those columns which contain mean and standard deviation features.  After the make.names statement, 'mean()' became 'mean..', and 'std()' became 'std..', hence the trailing '\\.' for both in the select statement. Note that features like 'fBodyAcc-meanFreq' in the original data set are not really means of measurements taken.
+We trim the data set by selecting only Subject, Activity, and those columns which contain mean and standard deviation features.  After the *make.names* statement, 'mean()' became 'mean..', and 'std()' became 'std..', hence the trailing '\\.' for both in the *select* statement. Note that features like 'fBodyAcc-meanFreq' in the original data set are not really means of measurements taken.
 ```{r eval=FALSE}
 baseData <- select(baseData,grep("Subject|Activity|mean\\.|std\\.",names(baseData),value=TRUE))
 ```
