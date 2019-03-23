@@ -1,5 +1,5 @@
 ##
-## GCDProject.R - mei128@infantes.com
+## run_analysis.R - mei128@infantes.com
 ##
 ## This script gets data from the UCI Machine Learning Repository and performs some cleaning (trimming
 ## unwanted variables) and tidying (add meaning to variable names and textual description of activity
