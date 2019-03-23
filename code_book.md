@@ -1,14 +1,10 @@
-==================================================================
 ## Getting and Cleaning Data Project Datasets ##
-Version 1.0
-==================================================================
+# Code Book #
 mei128@infantes.com
-https://github.com/mei128/GCDProject
-==================================================================
 
-This dataset has been produced as class project for the Getting and Cleaning Data course, and it is based on the Human Activity Recognition Using Smartphones Dataset [1]. The original set contained mobile phone accelerometer and gyroscope data for 30 individuals performing 6 activities, taken in overlapping moving windows of 128 samples per window. Acceleration was split in its body and gravity components,along its three XYZ axis, and total magnitude was computed, and each dimension was derived in time (rate of rate of change) to obtain jerk signals. Finally, a FFT was applied to some of the time based signals to obtain frequency domain signals.
+This dataset has been produced as a class project for the Getting and Cleaning Data course, and it is based on the *Human Activity Recognition Using Smartphones Dataset [1]*. The original set contained mobile phone accelerometer and gyroscope data for 30 individuals performing 6 activities, taken in overlapping moving windows of 128 samples per window. Acceleration was split in its body and gravity components,along the XYZ axis, total magnitude was computed, and each dimension was derived in time (rate of change) to obtain jerk signals. Finally, a FFT was applied to some of the time based signals to obtain frequency domain signals.
 
-Accelerometer data is normalized and expressed as fractions of g (9,81$m/s^(2)$). Angular data is expressed in radians/second.
+**Accelerometer data** is normalized and **expressed as fractions of g** (9,81$m/s^(2)$). **Angular (gyroscope) data** is expressed in **radians/second**.
 
 #### Nomenclator ####
 
